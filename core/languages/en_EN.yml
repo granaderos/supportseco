@@ -1,0 +1,14 @@
+general:
+    titleMain: SupportsEco - Be the Eco change!
+    registerNewsletter: Sign Up for the SupportsEco newsletter
+user:
+    settings: Settings
+    account: Account
+    changeEmail: Change your E-Mail address
+    changePassword: Change your Password
+    signInUsername: Your SupportsEco Username or E-Mail address
+    signInPassword: Your SupportsEco password
+    login: Sign In
+    logout: Sign Out
+    register: Sign Up
+    loggedInAs: You are logged in as %username%
