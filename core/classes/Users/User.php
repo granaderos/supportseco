@@ -1,27 +1,27 @@
 <?php
 namespace Users;
 use \Base\SECore;
-
 class User extends SECore
 {
-    private $username, $donationAmountPublic, $donationAmountPrivate, $donations = array();    
+    private $username, $donationAmountPublic, $donationAmountPrivate, $donations = array();
 
     public function __construct($username)
     {
+        parent::__construct();
         $this->username = $username;
         $this->getUserdataByUsername();
-        
-        return true;   
+
+        return true;
     }
-    
+
     /**
-    * Adding Userdata by a given Username
-    *
-    * @author Enorion <enorion@supports.eco>
-    * @return boolean
-    **/
+     * Getting User Data by a Username
+     *
+     * @author Enorion <enorion@supports.eco>
+     * @return bool
+     */
     private function getUserdataByUsername()
     {
-        return true;        
+        return true;
     }
 }
