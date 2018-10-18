@@ -3,7 +3,7 @@ namespace Base;
 
 class LanguageHandler
 {
-    private $languageCode, $strings;
+    private $languageCode, $strings = array();
     
     public function __construct($languageCode)
     {
@@ -42,6 +42,29 @@ class LanguageHandler
     
     private function parseYml()
     {
-        return = yaml_parse_file('/core/languages/'.$this->languageCode.'.yml');
+        $this->strings = yaml_parse_file('/core/languages/'.$this->languageCode.'.yml');
+        
+        return true;
+    }
+    
+    public function getByKey($key,$bindings = array())
+    {
+        if (in_array($key,$this->strings)) {
+            $baseString = $this->strings[$key];
+            if (!empty($bindings)) {
+                 foreach($bindings AS $bindingName => $bindingValue) {
+                     $baseString = str_replace("%".$bindingName."%",$bindingValue,$baseString);    
+                 }
+            }
+            
+            return $baseString;
+        } else {
+            return false;    
+        }
+    } 
+    
+    public function getAll()
+    {
+        return $this->strings;
     }
 }
