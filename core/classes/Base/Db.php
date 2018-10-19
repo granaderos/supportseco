@@ -7,7 +7,7 @@
  * @author  Enorion <enorion@supports.eco>
  * @version 0.1.18
  */
-namespace General;
+namespace Base;
 use PDO,PDOException,Interfaces\DbInterface;
 
 class DbPDO implements DbInterface
