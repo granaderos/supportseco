@@ -3,7 +3,7 @@ namespace Base;
 
 class SECore
 {
-    private $db, $cookieHandler, $language;
+    private $db, $cookieHandler, $languageHandler, $language;
     
     public function __construct()
     {
@@ -20,6 +20,16 @@ class SECore
         return $this->db;
     }
     
+    public function Language()
+    {
+        return $this->languageHandler;
+    }
+    
+    public function Cookie()
+    {
+        return $this->cookieHandler;
+    }
+    
     private function setLanguage()
     {
         if ($this->cookieHandler->checkCookie("language")) {
@@ -33,6 +43,6 @@ class SECore
     
     private function updateLanguage()
     {
-        $language = new LanguageHandler($this->language);
+        $this->languageHandler = new LanguageHandler($this->language);
     }
 }
