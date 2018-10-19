@@ -1,27 +1,27 @@
 <?php
 /**
  * Class DbPDO
- * Klasse für PDO Verbindungen zu den Standard Datenbanken sowie zu selbst definierten Datenbanken.
+ * Class to connect to Databases
  *
- * @package General
+ * @package Base
  * @author  Enorion <enorion@supports.eco>
  * @version 0.1.18
  */
 namespace Base;
 use PDO,PDOException,Interfaces\DbInterface;
 
-class DbPDO implements DbInterface
+class Db implements DbInterface
 {
     private $dbCons, $openedConnections = array(), $currentConnection, $errors, $fetchType = PDO::FETCH_ASSOC, $currentStmt;
 
     /**
-     * DbPDO constructor.
+     * Db constructor.
      *
      * @param   string $db
      */
     public function __construct($db = "none")
     {
-        $this->dbCons = Db::getDbData();
+        $this->dbCons = DbStorage::getDbData();
         $data = $this->dbCons[$db];
         if (!empty($data)) {
             $this->connectToDb($db);
