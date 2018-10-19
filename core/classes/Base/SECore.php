@@ -15,34 +15,69 @@ class SECore
         return true;
     }
     
+    /**
+     * Return the Database Instance
+     *
+     * @author Enorion <enorion@supports.eco>
+     * @return Db
+     */
     public function Db()
     {
         return $this->db;
     }
     
+    /**
+    * Return the LanguageHandler Instance
+    *
+    * @author Enorion <enorion@supports.eco>
+    * @return LanguageHandler
+    */
     public function Language()
     {
         return $this->languageHandler;
     }
     
+    /**
+    * Return the CookieHandler Instance
+    *
+    * @author Enorion <enorion@supports.eco>
+    * @return CookieHandler
+    */
     public function Cookie()
     {
         return $this->cookieHandler;
     }
     
+    /**
+     * Checking the language Cookie and setting the Language via the Handler
+     * while using English as a fallback
+     *
+     * @author Enorion <enorion@supports.eco>
+     * @return bool
+     */
     private function setLanguage()
     {
         if ($this->cookieHandler->checkCookie("language")) {
-            $this->language =  $this->getCookieValue("language");    
+            $this->language =  $this->getCookieValue("language");
         } else {
             $this->language = "en_EN";
         }
-        
+
         $this->updateLanguage();
+
+        return true;
     }
     
+    /**
+     * Instantiating the Language Handler and passing it into the class scope
+     *
+     * @author Enorion <enorion@supports.eco>
+     * @return bool
+     */
     private function updateLanguage()
     {
-        $this->languageHandler = new LanguageHandler($this->language);
+        $this->language = new LanguageHandler($this->language);
+
+        return true;
     }
 }
